@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event bubbling</title>
+    <style>
+        #outer {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #middle {
+            width: 50%;
+            height: 50%;
+            position: relative;
+            top: 25%;
+            left: 25%;
+            background-color: green;
+        }
+        #inner {
+            width: 50%;
+            height: 50%;
+            position: relative;
+            top: 25%;
+            left: 25%;
+            background-color: blue;
+        } </style>
+    <script>
+
+        function outerDivClick() {
+          appendText("outer Div Clicked");
+        }
+        function middleDivClick() {
+          appendText("middle Div Clicked");
+        }
+        function innerDivClick() {
+          appendText("inner Div Clicked");
+        }
+        function appendText(s) {
+         let li = document.createElement("li");
+          li.innerText = s;
+          document.getElementById("eventOrder").appendChild(li);
+        }
+        function clearList() {
+         let ol = document.createElement("ol");
+          ol.id = "eventOrder";
+          document.getElementById("bod").replaceChild(
+              ol,document.getElementById("eventOrder"));
+        }
+
+          window.onload = function () {
+            document.getElementById("outer").addEventListener("click", outerDivClick, false);
+            document.getElementById("middle").addEventListener("click", middleDivClick, false);
+            document.getElementById("inner").addEventListener("click", innerDivClick, false);
+            document.getElementById("clearButton").addEventListener("click", clearList);
+          }
+    </script>
+</head>
+<body id="bod">
+    <div id="outer">
+        <div id="middle" >
+            <div id="inner">
+            </div>
+        </div>
+    </div>
+    <ol id="eventOrder"> </ol>
+    <button type="button" id="clearButton">Clear</button>
+</body>
+</html>

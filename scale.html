@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        #orange1 {
+            height: 150px;
+            width: 225px;
+        }
+
+        .trans {
+            transform: scale(1.5) ;
+            transform: rotate(90deg);
+        }
+    </style>
+    <script>
+      window.onload = function () {
+        document.getElementById("orange1").onclick = function () {
+          console.warn('clicked')
+          this.classList.add("trans");
+        } }
+    </script>
+</head>
+<body>
+<img id="orange1" src="orange.jpeg" style="position:relative"/>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+        img {
+            width: 105px;
+            height: 75px;
+        }
+        img:hover {
+            cursor: pointer;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+      var video;
+      window.onload = function () {
+        video = document.getElementById("sampleVideo");
+        video.volume = 0.2
+      }
+      function play() {
+        video.play();
+      }
+      function pause() {
+        video.pause();
+      }
+      function back() {
+        video.currentTime -= 10;
+      }
+      function volume() {
+        if(video.volume == 1){
+          video.volume -= 0.2;
+        }
+        if (video.volume >= 0) {
+          video.volume += 0.2;
+        }
+      }
+    </script>
+</head>
+<body>
+<table>
+    <tr> <td>
+        <video height="400" width="600" id="sampleVideo">
+            <source src="samplevideo.mp4" type="audio/mp4"/>
+        </video>
+    </td>
+        <td>
+            <img id="backButton" src="backward.png" onclick="back();"/><br/>
+            <img id="playButton" src="forward.png" onclick="play();"/><br/>
+            <img src="volume.png" onclick="volume();"/><br/>
+            <img id="PauseButton" src="pause.png" onclick="pause();"/><br/>
+        </td> </tr>
+</table>
+<!--<audio controls>-->
+    <!--<source src="sample.mp3" type="audio/mp3"/>-->
+    <!--<source src="sample.ogg" type="audio/ogg"/>-->
+    <!--<p>Your browser does not support HTML5 audio.</p>-->
+<!--</audio>-->
+<hr/>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+      let globalVar = "global";
+      window.onload = function () {
+        let localVar = "local";
+        document.getElementById("Div1").onclick = function () {
+          let insideDiv1Click = "insideDiv1";
+          alert(globalVar);
+          alert(localVar);
+          alert(insideDiv1Click);
+        };
+        document.getElementById("Div2").onclick = function () {
+          alert(globalVar);
+          alert(localVar);
+          alert(insideDiv1Click);
+        };
+        document.getElementById("Div3").onclick = function () {
+          let insideDiv3 = "Div3";
+          // AFunction();
+          BFunctionWithParam(insideDiv3);
+        };
+        function AFunction() {
+          let x;
+          alert(insideDiv3);
+        }
+      }
+
+      function BFunctionWithParam(p) {
+        alert(p);
+        alert(localVar);
+      }
+    </script>
+</head>
+<body>
+    <div id="Div1">1</div>
+    <div id="Div2">2</div>
+    <div id="Div3">3</div>
+</body>
+</html>
